@@ -1,0 +1,276 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0f1226;
+  --card: rgba(255, 255, 255, 0.06);
+  --text: #ffffff;
+  --subtext: #a0a3bd;
+  --accent: #7c7cff;
+  --accent2: #ff6ec7;
+  --glass: rgba(255, 255, 255, 0.08);
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: radial-gradient(circle at top, #1a1f4d, #0f1226);
+  color: var(--text);
+}
+
+header {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, #7c7cff, #ff6ec7);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 0 10px 40px rgba(124, 124, 255, 0.4);
+}
+
+h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+header p {
+  margin-top: 0.5rem;
+  opacity: 0.9;
+}
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem 1.2rem;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+  color: var(--subtext);
+  margin-bottom: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: 0.35s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.card:hover::before {
+  opacity: 1;
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(124, 124, 255, 0.3);
+}
+
+.card.selected {
+  border: 2px solid #ff6ec7;
+  box-shadow: 0 0 15px rgba(255, 110, 199, 0.6);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card p {
+  padding: 0.7rem;
+  font-size: 0.85rem;
+}
+
+button {
+  background: linear-gradient(135deg, #7c7cff, #ff6ec7);
+  border: none;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(255, 110, 199, 0.4);
+}
+
+select {
+  padding: 0.6rem;
+  border-radius: 10px;
+  border: none;
+  background: var(--glass);
+  color: white;
+  backdrop-filter: blur(10px);
+  margin-bottom: 1rem;
+}
+
+select option {
+  background-color: #1a1f4d;
+  color: white;
+  padding: 10px;
+}
+
+.modal-content input,
+.modal-content select {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+select:focus {
+  outline: 2px solid var(--accent);
+  background: #252a5d;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: var(--card);
+  backdrop-filter: blur(15px);
+  padding: 2rem;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  animation: fadeUp 0.4s ease;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: none;
+  background: var(--glass);
+  color: white;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#mix-board {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.drop-zone {
+  flex: 1 1 120px;
+  height: auto;
+  max-height: 140px;
+  border-radius: 16px;
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--glass);
+  padding: 5px;
+  transition: 0.3s;
+}
+
+.drop-zone:hover {
+  border-color: #ff6ec7;
+  box-shadow: 0 0 20px rgba(255, 110, 199, 0.5);
+}
+
+.dropped-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.dropped-item img {
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.dropped-item p {
+  margin-top: 5px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 1.5rem 1rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .card img {
+    height: 140px;
+  }
+
+  #mix-board {
+    flex-direction: column;
+  }
+
+  .drop-zone {
+    width: 100%;
+    height: auto;
+    min-height: 120px;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

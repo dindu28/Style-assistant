@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stylemate | Your Style Assistant</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>StyleMate</h1>
+      <p>Your personal style assistant</p>
+    </header>
+
+    <main>
+      <!-- Wardrobe Gallery -->
+      <section id="wardrobe-section">
+        <h2>My Wardrobe</h2>
+        <button id="add-item-btn">Add Item</button>
+        <div id="wardrobe-gallery" class="grid"></div>
+      </section>
+
+      <!-- Outfit Generator -->
+      <section id="generator-section">
+        <h2>Generate Outfit</h2>
+        <select id="occasion-select">
+          <option value="">Select Occasion</option>
+          <option value="casual">Casual</option>
+          <option value="church">Church</option>
+          <option value="date">Date</option>
+          <option value="wedding">Wedding</option>
+          <option value="work">Work</option>
+        </select>
+        <button id="generate-btn">Generate Outfit</button>
+        <div id="outfit-display" class="grid"></div>
+        <button id="save-outfit-btn">Save Outfit</button>
+      </section>
+
+      <!-- Saved Outfits -->
+      <section id="saved-outfits-section">
+        <h2>Saved Outfits</h2>
+        <div id="saved-outfits-gallery" class="grid"></div>
+      </section>
+
+      <!-- Mix & Match -->
+      <section id="mix-section">
+        <h2>Mix & Match</h2>
+        <div id="mix-board">
+          <div class="drop-zone" data-category="top">Top</div>
+          <div class="drop-zone" data-category="bottom">Bottom</div>
+          <div class="drop-zone" data-category="dress">Dress</div>
+          <div class="drop-zone" data-category="shoes">Shoes</div>
+        </div>
+        <h3 style="margin-top: 1rem">Drag Items Here</h3>
+        <div id="mix-items" class="grid"></div>
+      </section>
+
+      <!-- Add Item Modal -->
+      <div id="add-item-modal" class="modal">
+        <div class="modal-content">
+          <span id="close-modal">&times;</span>
+          <h3>Add Clothing Item</h3>
+          <form id="add-item-form">
+            <input type="text" id="item-name" placeholder="Name" required />
+            <select id="item-category" required>
+              <option value="">Select Category</option>
+              <option value="dress">Dress</option>
+              <option value="top">Top</option>
+              <option value="bottom">Bottom</option>
+              <option value="shoes">Shoes</option>
+            </select>
+
+            <select id="item-occasion" required>
+              <option value="">Select Occasion</option>
+              <option value="casual">Casual</option>
+              <option value="church">Church</option>
+              <option value="date">Date</option>
+              <option value="wedding">Wedding</option>
+              <option value="work">Work</option>
+            </select>
+            <input
+              type="text"
+              id="item-img"
+              placeholder="Image URL or path"
+              required
+            />
+            <button type="submit">Add Item</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
